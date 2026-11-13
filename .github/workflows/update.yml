@@ -25,7 +25,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           VERSION: ${{ inputs.version }}
-        run: python3 scripts/update-formula.py $VERSION
+        run: python3 scripts/update-formula.py ${VERSION:+"$VERSION"}
       - name: Commit and test
         env:
           GH_TOKEN: ${{ github.token }}

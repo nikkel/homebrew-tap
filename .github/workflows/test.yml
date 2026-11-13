@@ -19,6 +19,9 @@ jobs:
         os: [ubuntu-latest, macos-latest]
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Put brew on the PATH (Linux runners)
+        if: runner.os == 'Linux'
+        run: echo "/home/linuxbrew/.linuxbrew/bin" >> "$GITHUB_PATH"
       - name: Use this checkout as the tap
         run: |
           tap_dir="$(brew --repository)/Library/Taps/nikkel"
