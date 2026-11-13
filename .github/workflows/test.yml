@@ -1,0 +1,41 @@
+name: Test
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  formula:
+    name: formula (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Use this checkout as the tap
+        run: |
+          tap_dir="$(brew --repository)/Library/Taps/nikkel"
+          mkdir -p "$tap_dir"
+          ln -s "$GITHUB_WORKSPACE" "$tap_dir/homebrew-tap"
+          brew trust nikkel/tap
+      - name: Style
+        run: brew style nikkel/tap
+      - name: Audit
+        run: brew audit --strict --online nikkel/tap/gitaway
+      - name: Install
+        run: brew install nikkel/tap/gitaway
+      - name: Test
+        run: brew test nikkel/tap/gitaway
+      - name: Both commands and the man page are in place
+        run: |
+          gitaway --version
+          git-away --version
+          man -w git-away
+          man -w gitaway-profile-add
