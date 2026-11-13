@@ -34,7 +34,7 @@ jobs:
             echo "Already up to date."
             exit 0
           fi
-          version="$(sed -n 's/^  version "\(.*\)"/\1/p' Formula/gitaway.rb)"
+          version="$(sed -n 's|.*/releases/download/v\([0-9.]*\)/.*|\1|p' Formula/gitaway.rb | head -n 1)"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -am "update: gitaway $version"

@@ -6,7 +6,7 @@ Usage: scripts/update-formula.py [VERSION]
 With no VERSION it uses the latest full release of nikkel/gitaway (the GitHub
 "latest" release, which never is a pre-release). For each platform it downloads
 the archive, checks its GitHub artifact attestation against the release tag,
-computes the SHA-256 itself, and writes version and hashes into the formula.
+computes the SHA-256 itself, and writes the version (in each url) and the hashes into the formula.
 Nothing is written unless every archive verifies. Needs `gh` (logged in or with
 GH_TOKEN set) and Python 3.
 
@@ -58,7 +58,7 @@ def main() -> None:
         hashes = {t: verified_sha256(tag, t, pathlib.Path(tmp)) for t in TARGETS}
 
     text = FORMULA.read_text()
-    text = re.sub(r'(?m)^(  version )"[^"]*"', rf'\1"{version}"', text)
+    text = re.sub(r"/releases/download/v[^/]+/", f"/releases/download/v{version}/", text)
     for target, digest in hashes.items():
         pattern = rf'(gitaway-{re.escape(target)}\.tar\.xz"\n\s+sha256 )"[0-9a-f]+"'
         text, count = re.subn(pattern, rf'\1"{digest}"', text)
