@@ -7,23 +7,23 @@ class Gitaway < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/nikkel/gitaway/releases/download/v0.1.1/gitaway-aarch64-apple-darwin.tar.xz"
-      sha256 "e9633b6e67e64ef39263d0ed6c3348d115ad64be09040fe5edc54883ef878dbe"
+      url "https://github.com/nikkel/gitaway/releases/download/v0.2.0/gitaway-aarch64-apple-darwin.tar.xz"
+      sha256 "91a2daee39a6457db3f812c1c710132e3e77839b04cd4d5ac2584e1947bf84db"
     end
     on_intel do
-      url "https://github.com/nikkel/gitaway/releases/download/v0.1.1/gitaway-x86_64-apple-darwin.tar.xz"
-      sha256 "abb697f590543fa19eade5ec295b6347d2713ae94682a6883123215ec9bb4f09"
+      url "https://github.com/nikkel/gitaway/releases/download/v0.2.0/gitaway-x86_64-apple-darwin.tar.xz"
+      sha256 "ad16234ee2ef60b76aecadd66ab90f5d3293ac1e9c7ea92f8146f8ff9c993b25"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/nikkel/gitaway/releases/download/v0.1.1/gitaway-aarch64-unknown-linux-musl.tar.xz"
-      sha256 "53a659bfe8d654c18babe942c75a143d4cd10c3ab2186fd9269dde00102c5379"
+      url "https://github.com/nikkel/gitaway/releases/download/v0.2.0/gitaway-aarch64-unknown-linux-musl.tar.xz"
+      sha256 "ec131713bcc9507d1218da0b8ddfca582f6e547d6636318f4e91746ed33bd274"
     end
     on_intel do
-      url "https://github.com/nikkel/gitaway/releases/download/v0.1.1/gitaway-x86_64-unknown-linux-musl.tar.xz"
-      sha256 "bd9eff340d16283e76d093bb12417b8bd260dec4bd762bf832f3265b921431b0"
+      url "https://github.com/nikkel/gitaway/releases/download/v0.2.0/gitaway-x86_64-unknown-linux-musl.tar.xz"
+      sha256 "7c37d1b4ea88190a61f23ad0d2b0c9ac7a8ad3d93ec734f29e206b68da7e0747"
     end
   end
 
